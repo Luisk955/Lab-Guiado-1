@@ -5,7 +5,7 @@
  */
 package ToDo.cl;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 /**
  *
@@ -14,15 +14,15 @@ import java.time.LocalDateTime;
 public class Tarea {
     private int id;
     private String descripcion;
-    private LocalDateTime fechaCreacion;
-    private LocalDateTime fechaVencimiento;
+    private LocalDate fechaCreacion;
+    private LocalDate fechaVencimiento;
     private String responsable;
     private String proyecto;
 
     public Tarea() {
     }
 
-    public Tarea(int id, String descripcion, LocalDateTime fechaCreacion, LocalDateTime fechaVencimiento, String responsable, String proyecto) {
+    public Tarea(int id, String descripcion, LocalDate fechaCreacion, LocalDate fechaVencimiento, String responsable, String proyecto) {
         this.id = id;
         this.descripcion = descripcion;
         this.fechaCreacion = fechaCreacion;
@@ -47,19 +47,19 @@ public class Tarea {
         this.descripcion = descripcion;
     }
 
-    public LocalDateTime getFechaCreacion() {
+    public LocalDate getFechaCreacion() {
         return fechaCreacion;
     }
 
-    public void setFechaCreacion(LocalDateTime fechaCreacion) {
+    public void setFechaCreacion(LocalDate fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
 
-    public LocalDateTime getFechaVencimiento() {
+    public LocalDate getFechaVencimiento() {
         return fechaVencimiento;
     }
 
-    public void setFechaVencimiento(LocalDateTime fechaVencimiento) {
+    public void setFechaVencimiento(LocalDate fechaVencimiento) {
         this.fechaVencimiento = fechaVencimiento;
     }
 
@@ -81,7 +81,7 @@ public class Tarea {
 
     @Override
     public String toString() {
-        return "Tarea{" + "id: " + id + ", descripcion: " + descripcion + ", fechaCreacion: =" + fechaCreacion + ", fechaVencimiento: " + fechaVencimiento + ", responsable: " + responsable + ", proyecto: " + proyecto + '}';
+        return "Tarea{" + "id: " + id + ", descripcion: " + descripcion + ", fechaCreacion: " + fechaCreacion + ", fechaVencimiento: " + fechaVencimiento + ", responsable: " + responsable + ", proyecto: " + proyecto + '}';
     }
     
     

@@ -8,9 +8,8 @@ package ToDo.ui;
 import ToDo.cl.Tarea;
 import java.io.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import todo.cl.TextFileIO;
-
+import java.util.ArrayList;
+import ToDo.cl.TextFileIO;
 /**
  *
  * @author Luisk
@@ -38,11 +37,13 @@ public class Main {
             out.println("0. Salir");
             out.println("Digite la opcion");
             opcion = Integer.parseInt(in.readLine());
+            procesarOpcion(opcion);
+                    
         } while (opcion != 0);
     }
 
-    public static void procesarOpcion(int opcion) throws IOException {
-        switch (opcion) {
+    public static void procesarOpcion(int pOpcion) throws IOException {
+        switch (pOpcion) {
             case 1:
                 registrarTarea();
                 break;
@@ -64,28 +65,60 @@ public class Main {
     public static void registrarTarea() throws IOException {
         int id;
         String descripcion;
-        LocalDateTime fechaVencimiento;
+        LocalDate fechaVencimiento;
         String responsable;
         String proyecto;
-        
+
         out.println("Digite el id de la tarea");
         id = Integer.parseInt(in.readLine());
-        
+
         out.println("Digite la descripcion de la tarea");
         descripcion = in.readLine();
 
         out.println("Digite el responsable de la tarea");
         responsable = in.readLine();
-        
+
         out.println("Digite el proyecto de la tarea");
         proyecto = in.readLine();
-        
+
         out.println("Digite la fecha de vencimiento de la tarea");
         fechaVencimiento = crearFecha();
-        
-        Tarea task = new Tarea(id, descripcion, LocalDateTime.now(), fechaVencimiento, responsable, proyecto);
+
+        Tarea task = new Tarea(id, descripcion, LocalDate.now(), fechaVencimiento, responsable, proyecto);
         archivo.setData(task.toString());
 
     }
 
+    public static LocalDate crearFecha() throws IOException {
+        LocalDate fecha;
+        int mes;
+        int year;
+        int dia;
+        out.println("Digite el dia");
+        dia = Integer.parseInt(in.readLine());
+
+        out.println("Digite el mes");
+        mes = Integer.parseInt(in.readLine());
+
+        out.println("Digite el año");
+        year = Integer.parseInt(in.readLine());
+
+        fecha = LocalDate.of(year, mes, dia);
+
+        return fecha;
+
+    }
+
+    /**
+     *
+     * @throws IOException
+     */
+    public static void listarTareas() throws java.io.IOException {
+        ArrayList<String> lista = archivo.getData();
+        int cont = 0;
+        for (String dato :lista){
+            out.println(lista.get(cont));
+            cont++;
+        }
+    }
 }
