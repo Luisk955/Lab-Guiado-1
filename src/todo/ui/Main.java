@@ -9,6 +9,8 @@ import todo.cl.Tarea;
 import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import todo.cl.Proyecto;
+import todo.cl.Responsable;
 import todo.cl.TextFileIO;
 
 /**
@@ -34,6 +36,10 @@ public class Main {
         do {
             out.println("1. Registrar tarea");
             out.println("2. Listar tareas");
+            out.println("3. Registrar responsable");
+            out.println("4. Listar responsables");
+            out.println("5. Registrar proyecto");
+            out.println("6. Listar proyectos");
             out.println("0. Salir");
             out.println("Digite la opcion");
             opcion = Integer.parseInt(in.readLine());
@@ -47,13 +53,32 @@ public class Main {
             case 1:
                 registrarTarea();
                 break;
+
             case 2:
                 listarTareas();
                 break;
+
+            case 3:
+                registrarResponsable();
+                break;
+
+            case 4:
+                listarResponsables();
+                break;
+
+            case 5:
+                registrarProyecto();
+                break;
+
+            case 6:
+                listarProyectos();
+                break;
+
             case 0:
 
                 out.println("Gracias por usar la aplicación");
                 break;
+
             default:
 
                 out.println("Opción incorrecta");
@@ -63,38 +88,37 @@ public class Main {
     }
 
     public static void registrarTarea() throws IOException {
-    
-    TextFileIO archivo = new TextFileIO("tareas.txt");
 
-    int id;
-    String descripcion;
-    LocalDate fechaVencimiento;
-    String responsable;
-    String proyecto;
+        TextFileIO archivo = new TextFileIO("tareas.txt");
 
-    out.println (
-    "Digite el id de la tarea");
-        id  = Integer.parseInt(in.readLine());
+        int id;
+        String descripcion;
+        LocalDate fechaVencimiento;
+        String responsable;
+        String proyecto;
 
-    out.println (
-    "Digite la descripcion de la tarea");
-        descripcion  = in.readLine();
+        out.println(
+                "Digite el id de la tarea");
+        id = Integer.parseInt(in.readLine());
 
-    out.println (
-    "Digite el responsable de la tarea");
-        responsable  = in.readLine();
+        out.println(
+                "Digite la descripcion de la tarea");
+        descripcion = in.readLine();
 
-    out.println (
-    "Digite el proyecto de la tarea");
-        proyecto  = in.readLine();
+        out.println(
+                "Digite el responsable de la tarea");
+        responsable = in.readLine();
 
-    out.println (
-    "Digite la fecha de vencimiento de la tarea");
-        fechaVencimiento  = crearFecha();
+        out.println(
+                "Digite el proyecto de la tarea");
+        proyecto = in.readLine();
 
-    Tarea task = new Tarea(id, descripcion, LocalDate.now(), fechaVencimiento, responsable, proyecto);
+        out.println("Digite la fecha de vencimiento de la tarea");
+        fechaVencimiento = crearFecha();
 
-    archivo.setData (task.toString());
+        Tarea task = new Tarea(id, descripcion, LocalDate.now(), fechaVencimiento, responsable, proyecto);
+
+        archivo.setData(task.toString());
 
     }
 
@@ -126,7 +150,66 @@ public class Main {
         TextFileIO archivo = new TextFileIO("tareas.txt");
         ArrayList<String> lista = archivo.getData();
         int cont = 0;
-        for (String dato :lista){
+        for (String dato : lista) {
+            out.println(lista.get(cont));
+            cont++;
+        }
+    }
+
+    public static void registrarResponsable() throws IOException {
+
+        TextFileIO archivo = new TextFileIO("responsables.txt");
+
+        String nombre;
+        String apellidos;
+        String identificacion;
+
+        out.println("Digite el nombre del responsable");
+        nombre = in.readLine();
+
+        out.println("Digite los apellidos del responsable");
+        apellidos = in.readLine();
+
+        out.println("Digite la identificacion del responsable");
+        identificacion = in.readLine();
+
+        Responsable responsable = new Responsable(nombre, apellidos, identificacion);
+
+        archivo.setData(responsable.toString());
+    }
+
+    public static void listarResponsables() throws java.io.IOException {
+        TextFileIO archivo = new TextFileIO("responsables.txt");
+        ArrayList<String> lista = archivo.getData();
+        int cont = 0;
+        for (String dato : lista) {
+            out.println(lista.get(cont));
+            cont++;
+        }
+    }
+
+    public static void registrarProyecto() throws IOException {
+        TextFileIO archivo = new TextFileIO("proyectos.txt");
+        String nombre;
+        LocalDate fechaCreacion;
+
+        out.println("Digite el nombre del proyecto");
+        nombre = in.readLine();
+
+        out.println("Digite la fecha de creacion del proyecto");
+        fechaCreacion = crearFecha();
+
+        Proyecto proyecto = new Proyecto(nombre, fechaCreacion);
+
+        archivo.setData(proyecto.toString());
+
+    }
+
+    public static void listarProyectos() throws java.io.IOException {
+        TextFileIO archivo = new TextFileIO("proyectos.txt");
+        ArrayList<String> lista = archivo.getData();
+        int cont = 0;
+        for (String dato : lista) {
             out.println(lista.get(cont));
             cont++;
         }
