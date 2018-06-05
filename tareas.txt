@@ -1,0 +1,2 @@
+
+Taera: id: 1234567, descripcion: Tarminar el lab, fechaCreacion: 2018-06-04, fechaVencimiento: 2018-06-04, responsable: Luisk, proyecto: Lab5

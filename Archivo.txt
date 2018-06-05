@@ -1,2 +1,0 @@
-Tarea{id: 12345, descripcion: Terinar el lab, fechaCreacion: 2018-06-04, fechaVencimiento: 2018-06-04, responsable: Luisk, proyecto: Laboratorio 1}
-Tarea{id: 54321, descripcion: Darle estilos la lab, fechaCreacion: 2018-06-04, fechaVencimiento: 2018-06-07, responsable: Luisk, proyecto: Lab 3}

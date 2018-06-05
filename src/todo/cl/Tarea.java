@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ToDo.cl;
+package todo.cl;
 
 import java.time.LocalDate;
 
@@ -81,7 +81,7 @@ public class Tarea {
 
     @Override
     public String toString() {
-        return "Tarea{" + "id: " + id + ", descripcion: " + descripcion + ", fechaCreacion: " + fechaCreacion + ", fechaVencimiento: " + fechaVencimiento + ", responsable: " + responsable + ", proyecto: " + proyecto + '}';
+        return "Taera: id: " + id + ", descripcion: " + descripcion + ", fechaCreacion: " + fechaCreacion + ", fechaVencimiento: " + fechaVencimiento + ", responsable: " + responsable + ", proyecto: " + proyecto;
     }
     
     

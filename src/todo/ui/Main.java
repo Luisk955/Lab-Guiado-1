@@ -5,18 +5,18 @@
  */
 package ToDo.ui;
 
-import ToDo.cl.Tarea;
+import todo.cl.Tarea;
 import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import ToDo.cl.TextFileIO;
+import todo.cl.TextFileIO;
+
 /**
  *
  * @author Luisk
  */
 public class Main {
 
-    static TextFileIO archivo = new TextFileIO("Archivo.txt");
     static BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
     static PrintStream out = System.out;
 
@@ -38,7 +38,7 @@ public class Main {
             out.println("Digite la opcion");
             opcion = Integer.parseInt(in.readLine());
             procesarOpcion(opcion);
-                    
+
         } while (opcion != 0);
     }
 
@@ -63,29 +63,38 @@ public class Main {
     }
 
     public static void registrarTarea() throws IOException {
-        int id;
-        String descripcion;
-        LocalDate fechaVencimiento;
-        String responsable;
-        String proyecto;
+    
+    TextFileIO archivo = new TextFileIO("tareas.txt");
 
-        out.println("Digite el id de la tarea");
-        id = Integer.parseInt(in.readLine());
+    int id;
+    String descripcion;
+    LocalDate fechaVencimiento;
+    String responsable;
+    String proyecto;
 
-        out.println("Digite la descripcion de la tarea");
-        descripcion = in.readLine();
+    out.println (
+    "Digite el id de la tarea");
+        id  = Integer.parseInt(in.readLine());
 
-        out.println("Digite el responsable de la tarea");
-        responsable = in.readLine();
+    out.println (
+    "Digite la descripcion de la tarea");
+        descripcion  = in.readLine();
 
-        out.println("Digite el proyecto de la tarea");
-        proyecto = in.readLine();
+    out.println (
+    "Digite el responsable de la tarea");
+        responsable  = in.readLine();
 
-        out.println("Digite la fecha de vencimiento de la tarea");
-        fechaVencimiento = crearFecha();
+    out.println (
+    "Digite el proyecto de la tarea");
+        proyecto  = in.readLine();
 
-        Tarea task = new Tarea(id, descripcion, LocalDate.now(), fechaVencimiento, responsable, proyecto);
-        archivo.setData(task.toString());
+    out.println (
+    "Digite la fecha de vencimiento de la tarea");
+        fechaVencimiento  = crearFecha();
+
+    Tarea task = new Tarea(id, descripcion, LocalDate.now(), fechaVencimiento, responsable, proyecto);
+
+    archivo.setData (task.toString());
 
     }
 
@@ -114,6 +123,7 @@ public class Main {
      * @throws IOException
      */
     public static void listarTareas() throws java.io.IOException {
+        TextFileIO archivo = new TextFileIO("tareas.txt");
         ArrayList<String> lista = archivo.getData();
         int cont = 0;
         for (String dato :lista){
